@@ -6,9 +6,8 @@ import com.minin.web.model.Product;
 import com.minin.web.service.CategoryService;
 import com.minin.web.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,8 +17,11 @@ public class ProductController {
     private final CategoryService categoryService;
 
     @GetMapping("/products")
-    public List<Product> findAllProducts() {
-        return productService.findAllProducts();
+    public Page<ProductDto> findAllProducts(@RequestParam(defaultValue = "1", name = "p") int pageIndex) {
+        if (pageIndex < 1) {
+            pageIndex = 1;
+        }
+        return productService.findAllProducts(pageIndex - 1, 10).map(ProductDto::new);
     }
 
     @GetMapping("/products/{id}")
@@ -36,6 +38,11 @@ public class ProductController {
         product.setCategory(category);
         productService.save(product);
         return new ProductDto(product);
+    }
+
+    @GetMapping("/products/delete")
+    public void delete(@RequestParam Long id) {
+        productService.delete(productService.findProductById(id).get());
     }
 
 }
