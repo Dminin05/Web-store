@@ -5,7 +5,7 @@ angular.module('market', []).controller('indexController', function ($scope, $ht
 
     var loadProducts = function (pageIndex = 1) {
         $http({
-            url: contextPath + 'products',
+            url: contextPath + 'api/v1/products',
             method:'GET',
             params: {
                 p: pageIndex
@@ -17,7 +17,7 @@ angular.module('market', []).controller('indexController', function ($scope, $ht
 
     $scope.delete = function (idToDelete) {
         $http({
-            url: contextPath + 'products/delete',
+            url: contextPath + 'api/v1/products/delete',
             method: 'GET',
             params: {
                 id: idToDelete
