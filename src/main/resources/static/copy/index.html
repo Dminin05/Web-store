@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/56225ce7bd.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-route.min.js"></script>
+
+    <script src="index.js"></script>
+    
+</head>
+<body ng-app = "market">
+<div class="container" ng-controller = "indexController">
+    <h1>MarketPlace</h1>
+
+    <p></p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Price</td>
+            <td></td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat = "p in productsPage.content">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.price}}</td>
+            <td><button class="btn btn-danger" ng-click = "delete(p.id)"><i class="far fa-trash-alt"></i></button></td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+    <nav aria-label="Page navigation">
+
+        <ul class="pagination">
+
+            <button ng-show = "currentPageIndex > 1" class="btn btn-secondary" ng-click = "back()"><i class="fa-solid fa-angles-left"></i></button>
+            <li class="page-item" ng-repeat = "pageIndex in paginationArray">
+                <button ng-show = "currentPageIndex != pageIndex" class="btn btn-secondary" ng-click = "loadProducts(pageIndex)">{{pageIndex}}</button>
+                <button disabled ng-show = "currentPageIndex == pageIndex" style="background: darkgrey" class="btn btn-secondary" ng-click = "loadProducts(pageIndex)">{{pageIndex}}</button>
+            </li>
+            <button ng-show = "currentPageIndex < productsPage.totalPages" class="btn btn-secondary" ng-click = "forward()"><i class="fa-solid fa-angles-right"></i></button>
+        </ul>
+    </nav>
+
+    <p></p>
+    <h1>Create new product</h1>
+
+    <form novalidate ng-submit="createNewProduct()">
+        <input class="form-control" type="text" placeholder="Title" ng-model="newProduct.title">
+        <p></p>
+        <input class="form-control" type="number" placeholder="Price" ng-model="newProduct.price">
+        <p></p>
+        <input class="form-control" type="text" placeholder="Category title" ng-model="newProduct.categoryTitle">
+        <p></p>
+        <button type="submit" class="btn btn-secondary">Create</button>
+    </form>
+
+</div>
+</body>
+</html>

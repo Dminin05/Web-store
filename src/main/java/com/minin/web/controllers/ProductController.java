@@ -1,7 +1,6 @@
 package com.minin.web.controllers;
 
 import com.minin.web.dtos.ProductDto;
-import com.minin.web.exceptions.MarketError;
 import com.minin.web.exceptions.ResourceNotFoundException;
 import com.minin.web.model.Category;
 import com.minin.web.model.Product;
@@ -9,8 +8,6 @@ import com.minin.web.service.CategoryService;
 import com.minin.web.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -51,6 +48,11 @@ public class ProductController {
     @GetMapping("/delete")
     public void delete(@RequestParam Long id) {
         productService.delete(productService.findProductById(id).get());
+    }
+
+    @PutMapping
+    public void updateProduct(@RequestBody ProductDto productDto) {
+        productService.updateProduct(productDto);
     }
 
 }
