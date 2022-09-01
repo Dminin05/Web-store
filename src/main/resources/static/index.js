@@ -1,55 +1,34 @@
-angular.module('market', []).controller('indexController', function ($scope, $http) {
+(function () {
 
-    const contextPath = 'http://localhost:8189/market/'
-    $scope.pageIndex = 1;
+    angular
+        .module('market', ['ngRoute'])
+        .config(config)
+        .run(run);
 
-    var loadProducts = function (pageIndex = 1) {
-        $http({
-            url: contextPath + 'api/v1/products',
-            method:'GET',
-            params: {
-                p: pageIndex
-            }
-        }).then(function (response) {
-            $scope.productsPage = response.data;
-        });
+    function config($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'welcome/welcome.html',
+                controller: 'welcomeController'
+            })
+            .when('/store', {
+                templateUrl: 'store/store.html',
+                controller: 'storeController'
+            })
+            .when('/edit_product/:productId', {
+                templateUrl: 'edit_product/edit_product.html',
+                controller: 'editProductController'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
     };
 
-    $scope.delete = function (idToDelete) {
-        $http({
-            url: contextPath + 'api/v1/products/delete',
-            method: 'GET',
-            params: {
-                id: idToDelete
-            }
-        }).then(function (response) {
-            if ($scope.productsPage.content.length == 1 && $scope.productsPage.totalPages != 1) {
-                $scope.pageIndex -= 1;
-                loadProducts($scope.pageIndex);
-            } else {
-                loadProducts($scope.pageIndex);
-            }
-        });
+    function run($rootScope, $http) {
+
     };
+})();
 
-    $scope.refresh = function () {
-        loadProducts($scope.pageIndex)
-    };
-
-    $scope.forward = function () {
-        if ($scope.pageIndex < $scope.productsPage.totalPages) {
-            $scope.pageIndex++
-            loadProducts($scope.pageIndex);
-        }
-    };
-
-    $scope.back = function () {
-        if ($scope.pageIndex > 1) {
-            $scope.pageIndex--;
-            loadProducts($scope.pageIndex);
-        }
-    };
-
-    loadProducts($scope.pageIndex);
-
+angular.module('market').controller('indexController', function ($rootScope, $scope, $http) {
+    const contextPath = 'http://localhost:8189/market/';
 });
