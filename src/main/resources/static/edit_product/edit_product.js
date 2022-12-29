@@ -5,6 +5,7 @@ angular.module('market').controller('editProductController', function ($scope, $
         $http.get(contextPath + 'api/v1/products/' + $routeParams.productId)
             .then(function successCallback (response) {
                 $scope.updated_product = response.data;
+                console.log(response)
             }, function failureCallback (response) {
                 console.log(response);
                 alert(response.data.messages);

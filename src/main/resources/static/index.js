@@ -19,6 +19,10 @@
                 templateUrl: 'edit_product/edit_product.html',
                 controller: 'editProductController'
             })
+            .when('/create_product', {
+                templateUrl: 'create_product/create_product.html',
+                controller: 'createNewProductController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
