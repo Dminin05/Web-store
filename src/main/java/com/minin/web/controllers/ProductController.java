@@ -2,12 +2,15 @@ package com.minin.web.controllers;
 
 import com.minin.web.dtos.ProductDto;
 import com.minin.web.exceptions.ResourceNotFoundException;
+import com.minin.web.exceptions.ValidationException;
 import com.minin.web.model.Category;
 import com.minin.web.model.Product;
 import com.minin.web.service.CategoryService;
 import com.minin.web.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -35,7 +38,10 @@ public class ProductController {
     }
 
     @PostMapping
-    public ProductDto save(@RequestBody ProductDto productDto) {
+    public ProductDto save(@RequestBody @Validated ProductDto productDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new ValidationException("Ошибка валидации");
+        }
         Product product = new Product();
         product.setTitle(productDto.getTitle());
         product.setPrice(productDto.getPrice());
