@@ -60,6 +60,20 @@ angular.module('market').controller('storeController', function ($scope, $http, 
         });
     };
 
+    $scope.addProduct = function (idToAdd) {
+        $http({
+            url: contextPath + 'api/v1/cart/add',
+            method:'GET',
+            params: {
+                id: idToAdd
+            }
+        }).then(function (response) {
+            console.log(response)
+        });
+    };
+
     $scope.loadProducts();
+
+
 
 });
