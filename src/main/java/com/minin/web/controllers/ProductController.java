@@ -9,6 +9,7 @@ import com.minin.web.service.CategoryService;
 import com.minin.web.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,7 @@ public class ProductController {
         return new ProductDto(product);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ProductDto save(@RequestBody @Validated ProductDto productDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -51,11 +53,13 @@ public class ProductController {
         return new ProductDto(product);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete")
     public void delete(@RequestParam Long id) {
         productService.delete(productService.findProductById(id).get());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping
     public void updateProduct(@RequestBody ProductDto productDto) {
         productService.updateProduct(productDto);
