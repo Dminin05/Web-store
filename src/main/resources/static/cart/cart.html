@@ -1,0 +1,24 @@
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Price</td>
+            <td></td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat = "p in products">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.price}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click = "deleteProduct(p.id)"><i class="far fa-trash-alt"></i></button>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
