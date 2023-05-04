@@ -68,7 +68,17 @@ angular.module('market').controller('storeController', function ($scope, $http, 
                 id: idToAdd
             }
         }).then(function (response) {
+            $scope.getCart();
             console.log(response)
+        });
+    };
+
+    $scope.getCart = function () {
+        $http({
+            url: contextPath + 'api/v1/cart',
+            method:'GET'
+        }).then(function (response) {
+            $scope.cart = response.data;
         });
     };
 
