@@ -1,32 +1,34 @@
 package com.minin.web.service;
 
-
 import com.minin.web.dtos.ProductDto;
 import com.minin.web.model.Cart;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.annotation.PostConstruct;
 
 @Service
 @RequiredArgsConstructor
 public class CartService {
 
-    private final Cart cart;
+    private final ProductService productService;
+    private Cart cart;
 
-    public List<ProductDto> getProducts() {
-        return cart.getProductList();
+    @PostConstruct
+    public void init() {
+        cart = new Cart();
     }
 
-    public void addProduct(ProductDto productDto) {
-        cart.getProductList().add(productDto);
+    public Cart getCurrentCart() {
+        return cart;
     }
 
-    public void deleteProduct(ProductDto productDto) {
-        cart.getProductList().remove(productDto);
+    public void addProductToCart(ProductDto productDto) {
+        cart.addProduct(productDto);
     }
 
-
-
+    public void deleteProductFromCart(Long id) {
+        cart.deleteProduct(id);
+    }
 
 }
