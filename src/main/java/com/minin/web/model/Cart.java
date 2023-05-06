@@ -1,6 +1,6 @@
 package com.minin.web.model;
 
-import com.minin.web.dtos.ProductDto;
+import com.minin.web.repository.dtos.ProductDto;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -14,6 +14,11 @@ public class Cart {
 
     public List<CartItem> getProductsInCart() {
         return cart;
+    }
+
+    public void deleteCart() {
+        cart = new ArrayList<>();
+        totalPrice = 0;
     }
 
     public void addProduct(ProductDto productDto) {

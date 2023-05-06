@@ -69,7 +69,6 @@ angular.module('market').controller('storeController', function ($scope, $http, 
             }
         }).then(function (response) {
             $scope.getCart();
-            console.log(response)
         });
     };
 
@@ -79,6 +78,7 @@ angular.module('market').controller('storeController', function ($scope, $http, 
             method:'GET'
         }).then(function (response) {
             $scope.cart = response.data;
+            console.log($scope.cart)
         });
     };
 

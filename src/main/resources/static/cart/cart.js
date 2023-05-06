@@ -1,4 +1,4 @@
-angular.module('market').controller('cartController', function ($scope, $http, $routeParams, $location) {
+angular.module('market').controller('cartController', function ($scope, $http, $routeParams, $location, $localStorage) {
     const contextPath = 'http://localhost:8189/market/';
 
     $scope.loadProducts = function () {
@@ -7,7 +7,6 @@ angular.module('market').controller('cartController', function ($scope, $http, $
             method:'GET'
         }).then(function (response) {
             $scope.products = response.data;
-            console.log(response)
         });
     };
 
@@ -33,6 +32,29 @@ angular.module('market').controller('cartController', function ($scope, $http, $
             $scope.loadProducts();
         });
     };
+
+    $scope.createOrder = function () {
+        $http({
+            url: contextPath + 'api/v1/cart/createOrder',
+            method:'GET',
+            params: {
+                username: $localStorage.webUserStorage.username
+            }
+        }).then(function (response) {
+            $scope.getCart();
+            $scope.loadProducts();
+        });
+    };
+
+    $scope.isCartEmpty = function () {
+        if ($scope.products !== undefined) {
+            if ($scope.products.length == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
 
     $scope.getCart();
     $scope.loadProducts();

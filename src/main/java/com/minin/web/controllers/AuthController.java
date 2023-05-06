@@ -1,7 +1,7 @@
 package com.minin.web.controllers;
 
-import com.minin.web.dtos.AuthRequest;
-import com.minin.web.dtos.AuthResponse;
+import com.minin.web.repository.dtos.AuthRequest;
+import com.minin.web.repository.dtos.AuthResponse;
 import com.minin.web.exceptions.MarketError;
 import com.minin.web.service.UserService;
 import com.minin.web.utils.JwtTokenUtil;
