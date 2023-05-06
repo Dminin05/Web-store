@@ -1,4 +1,4 @@
-package com.minin.web.model;
+package com.minin.web.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,33 +7,20 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Collection;
 
 @Entity
-@Table(name = "users")
+@Table(name = "roles")
 @Data
 @NoArgsConstructor
-public class User {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "username")
-    private String username;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "email")
-    private String email;
-
-    @ManyToMany
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> roles;
+    @Column(name = "name")
+    private String name;
 
     @CreationTimestamp
     @Column(name = "created_at")

@@ -1,6 +1,6 @@
 package com.minin.web.service;
 
-import com.minin.web.model.Category;
+import com.minin.web.entities.Category;
 import com.minin.web.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

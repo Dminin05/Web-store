@@ -1,6 +1,6 @@
 package com.minin.web.dtos;
 
-import com.minin.web.model.Product;
+import com.minin.web.entities.Product;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

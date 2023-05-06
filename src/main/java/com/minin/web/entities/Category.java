@@ -1,4 +1,4 @@
-package com.minin.web.model;
+package com.minin.web.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
