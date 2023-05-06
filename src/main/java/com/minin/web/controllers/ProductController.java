@@ -1,6 +1,6 @@
 package com.minin.web.controllers;
 
-import com.minin.web.dtos.ProductDto;
+import com.minin.web.repository.dtos.ProductDto;
 import com.minin.web.exceptions.ResourceNotFoundException;
 import com.minin.web.exceptions.ValidationException;
 import com.minin.web.entities.Category;

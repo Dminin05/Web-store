@@ -1,4 +1,4 @@
-package com.minin.web.dtos;
+package com.minin.web.repository.dtos;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.minin.web.service;
 
-import com.minin.web.dtos.ProductDto;
+import com.minin.web.repository.dtos.ProductDto;
 import com.minin.web.model.Cart;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,6 @@ import javax.annotation.PostConstruct;
 @RequiredArgsConstructor
 public class CartService {
 
-    private final ProductService productService;
     private Cart cart;
 
     @PostConstruct
@@ -29,6 +28,10 @@ public class CartService {
 
     public void deleteProductFromCart(Long id) {
         cart.deleteProduct(id);
+    }
+
+    public void deleteCart() {
+        cart.deleteCart();
     }
 
 }
