@@ -2,13 +2,12 @@ package com.minin.web.service;
 
 import com.minin.web.dtos.ProductDto;
 import com.minin.web.exceptions.ResourceNotFoundException;
-import com.minin.web.model.Category;
-import com.minin.web.model.Product;
+import com.minin.web.entities.Category;
+import com.minin.web.entities.Product;
 import com.minin.web.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

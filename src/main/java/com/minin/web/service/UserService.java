@@ -1,7 +1,7 @@
 package com.minin.web.service;
 
-import com.minin.web.model.Role;
-import com.minin.web.model.User;
+import com.minin.web.entities.Role;
+import com.minin.web.entities.User;
 import com.minin.web.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

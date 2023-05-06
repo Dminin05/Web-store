@@ -1,6 +1,6 @@
 package com.minin.web.repository;
 
-import com.minin.web.model.Category;
+import com.minin.web.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
