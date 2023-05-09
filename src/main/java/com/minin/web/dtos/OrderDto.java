@@ -1,4 +1,4 @@
-package com.minin.web.repository.dtos;
+package com.minin.web.dtos;
 
 import com.minin.web.entities.Order;
 import lombok.Data;

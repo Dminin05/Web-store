@@ -1,7 +1,7 @@
 package com.minin.web.controllers;
 
 
-import com.minin.web.repository.dtos.ProductDto;
+import com.minin.web.dtos.ProductDto;
 import com.minin.web.entities.Order;
 import com.minin.web.entities.Product;
 import com.minin.web.entities.User;
