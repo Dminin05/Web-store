@@ -1,4 +1,4 @@
-package com.minin.web.repository.dtos;
+package com.minin.web.dtos;
 
 import com.minin.web.entities.Product;
 import lombok.Data;
@@ -20,6 +20,7 @@ public class ProductDto {
     private int price;
     @NotNull(message = "У товара должна быть категория")
     private String categoryTitle;
+    private int quantity;
 
     public ProductDto(Product product) {
         this.id = product.getId();
