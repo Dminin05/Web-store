@@ -28,22 +28,7 @@ public class OrderController {
 
     @GetMapping("/info")
     public List<ProductDto> getOrderListById(@RequestParam Long id) {
-        List<ProductDto> products = new ArrayList<>();
-        Map<ProductDto, Integer> map = new HashMap<>();
-        List<ProductDto> productDtos = new OrderDto(orderService.getOrderById(id).get()).getProductDtos();
-        for (ProductDto p : productDtos) {
-            if (map.containsKey(p)) {
-                map.put(p, map.get(p)+1);
-            } else {
-                map.put(p, 1);
-            }
-        }
-        for (Map.Entry<ProductDto, Integer> entry : map.entrySet()) {
-            ProductDto productDto = entry.getKey();
-            productDto.setQuantity(entry.getValue());
-            products.add(productDto);
-        }
-        return products;
+        return orderService.getOrderListById(id);
     }
 
 }
