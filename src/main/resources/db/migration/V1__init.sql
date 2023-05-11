@@ -82,8 +82,8 @@ create table orders
 create table orders_products
 (
     id bigserial primary key,
-    order_id bigint not null,
-    product_id bigint not null
+    order_id bigint references orders(id),
+    product_id bigint references products(id)
 
 );
 
