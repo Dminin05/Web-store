@@ -1,0 +1,38 @@
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Quantity</td>
+            <td>Price</td>
+            <td></td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat = "p in products">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.quantity}}</td>
+            <td>{{p.price}}*{{p.quantity}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click = "deleteProduct(p.id)"><i class="far fa-trash-alt"></i></button>
+            </td>
+        </tr>
+
+        <tr style="background: darkgrey">
+            <td>Итого</td>
+            <td></td>
+            <td></td>
+            <td>{{cart.totalPrice}}</td>
+            <td></td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+    <button class="btn btn-secondary" ng-show = "isCartEmpty()" ng-click = "createOrder()">Оформить заказ</button>
+
+</div>
