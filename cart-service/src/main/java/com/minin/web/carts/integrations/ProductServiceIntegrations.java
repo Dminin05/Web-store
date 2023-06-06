@@ -1,20 +1,26 @@
 package com.minin.web.carts.integrations;
 
 import com.minin.web.api.dtos.ProductDto;
+import com.minin.web.carts.properties.ProductServiceIntegrationProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
 public class ProductServiceIntegrations {
 
-    private final RestTemplate restTemplate;
+    private final ProductServiceIntegrationProperties productServiceIntegrationProperties;
+
+    private final WebClient productServiceWebClient;
 
     public ProductDto getProductById(Long id) {
-        return restTemplate.getForObject("http://localhost:8189/market/api/v1/products/" + id,  ProductDto.class);
+        return productServiceWebClient.get()
+                .uri("/api/v1/products/" + id)
+                .retrieve()
+                .bodyToMono(ProductDto.class)
+                .block();
     }
 
 }
