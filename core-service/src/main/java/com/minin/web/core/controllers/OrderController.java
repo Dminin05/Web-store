@@ -48,7 +48,7 @@ public class OrderController {
         Order order = new Order();
         int price = 0;
         List<Product> productsInOrder = new ArrayList<>();
-        CartDto cartDto = cartServiceIntegrations.getCurrentCart().orElseThrow(() -> new ResourceNotFoundException("Корзина не найдена"));
+        CartDto cartDto = cartServiceIntegrations.getCurrentCart();
         List<CartItemDto> cartItems = cartDto.getItems();
         for (CartItemDto cartItem : cartItems) {
             price = price + cartItem.getPrice();
