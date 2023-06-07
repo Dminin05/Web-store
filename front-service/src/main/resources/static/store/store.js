@@ -1,7 +1,7 @@
 angular.module('market').controller('storeController', function ($scope, $http, $location) {
 
-    const contextPath = 'http://localhost:8189/market/';
-    const contextPathForCart = 'http://localhost:8190/market-carts/';
+    const contextPath = 'http://localhost:5555/core/';
+    const contextPathForCart = 'http://localhost:5555/cart/';
     $scope.currentPageIndex = 1;
 
     $scope.loadProducts = function (pageIndex = 1) {

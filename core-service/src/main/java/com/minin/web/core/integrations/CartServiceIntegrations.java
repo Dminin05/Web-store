@@ -13,8 +13,6 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CartServiceIntegrations {
 
-    private final CartServiceIntegrationProperties cartServiceIntegrationProperties;
-
     private final WebClient cartServiceWebClient;
 
     public CartDto getCurrentCart() {

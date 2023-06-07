@@ -48,10 +48,11 @@
 })();
 
 angular.module('market').controller('indexController', function ($rootScope, $scope, $http, $localStorage) {
-    const contextPath = 'http://localhost:8189/market';
+    const contextPath = 'http://localhost:5555/core';
+    const contextPathAuth = 'http://localhost:5555/auth';
 
     $scope.tryToAuth = function () {
-        $http.post(contextPath + '/auth', $scope.user)
+        $http.post(contextPathAuth + '/auth', $scope.user)
             .then(function successCallback(response) {
                 if (response.data.token) {
                     $http.defaults.headers.common.Authorization = 'Bearer ' + response.data.token;

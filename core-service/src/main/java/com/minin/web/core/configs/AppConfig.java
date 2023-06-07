@@ -1,5 +1,6 @@
 package com.minin.web.core.configs;
 
+import com.minin.web.core.properties.AuthServiceIntegrationProperties;
 import com.minin.web.core.properties.CartServiceIntegrationProperties;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
@@ -17,12 +18,16 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableConfigurationProperties(
-        CartServiceIntegrationProperties.class
+        {
+                CartServiceIntegrationProperties.class,
+                AuthServiceIntegrationProperties.class
+        }
 )
 @RequiredArgsConstructor
 public class AppConfig {
 
     private final CartServiceIntegrationProperties cartServiceIntegrationProperties;
+    private final AuthServiceIntegrationProperties authServiceIntegrationProperties;
 
     @Bean
     public WebClient cartServiceWebClient() {
@@ -37,6 +42,23 @@ public class AppConfig {
         return WebClient
                 .builder()
                 .baseUrl(cartServiceIntegrationProperties.getUrl())
+                .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
+                .build();
+    }
+
+    @Bean
+    public WebClient authServiceWebClient() {
+        TcpClient tcpClient = TcpClient
+                .create()
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, authServiceIntegrationProperties.getConnectTimeout())
+                .doOnConnected(connection -> {
+                    connection.addHandlerLast(new ReadTimeoutHandler(authServiceIntegrationProperties.getReadTimeout(), TimeUnit.MILLISECONDS));
+                    connection.addHandlerLast(new WriteTimeoutHandler(authServiceIntegrationProperties.getWriteTimeout(), TimeUnit.MILLISECONDS));
+                });
+
+        return WebClient
+                .builder()
+                .baseUrl(authServiceIntegrationProperties.getUrl())
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
                 .build();
     }

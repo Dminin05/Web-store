@@ -1,5 +1,5 @@
 angular.module('market').controller('orderController', function ($scope, $http, $routeParams, $location, $localStorage) {
-    const contextPath = 'http://localhost:8189/market/';
+    const contextPath = 'http://localhost:5555/core/';
 
     $scope.showOrders = function () {
         $http({
