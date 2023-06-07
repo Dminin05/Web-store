@@ -1,5 +1,7 @@
 package com.minin.web.auth.controllers;
 
+import com.minin.web.api.dtos.AuthRequest;
+import com.minin.web.api.dtos.AuthResponse;
 import com.minin.web.auth.exceptions.AppError;
 import com.minin.web.auth.services.UserService;
 import com.minin.web.auth.utils.JwtTokenUtil;
@@ -10,11 +12,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.minin.web.api.dtos.*;
 
 
 @RestController
@@ -24,7 +24,7 @@ public class AuthController {
     private final JwtTokenUtil jwtTokenUtil;
     private final AuthenticationManager authenticationManager;
 
-    @PostMapping("/authenticate")
+    @PostMapping("/auth")
     public ResponseEntity<?> createAuthToken(@RequestBody AuthRequest authRequest) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));

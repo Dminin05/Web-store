@@ -48,7 +48,6 @@
 })();
 
 angular.module('market').controller('indexController', function ($rootScope, $scope, $http, $localStorage) {
-    const contextPath = 'http://localhost:5555/core';
     const contextPathAuth = 'http://localhost:5555/auth';
 
     $scope.tryToAuth = function () {
