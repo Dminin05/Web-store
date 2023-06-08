@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/order")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class OrderController {
 
     private final OrderService orderService;
