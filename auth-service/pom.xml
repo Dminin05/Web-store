@@ -2,16 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.3</version>
+        <version>2.5.5</version>
         <relativePath/>
     </parent>
 
-    <groupId>com.minin.web-store</groupId>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.geekbrains.march.market</groupId>
     <artifactId>auth-service</artifactId>
 
     <properties>
@@ -22,17 +23,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>9.13.0</version>
         </dependency>
 
         <dependency>
@@ -43,13 +41,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.0.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -60,12 +56,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.0.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>3.0.4</version>
         </dependency>
         <dependency>
             <groupId>com.minin.web-store</groupId>
@@ -75,14 +65,11 @@
         </dependency>
     </dependencies>
 
-
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.7.3</version>
                 <configuration>
                     <excludes>
                         <exclude>
@@ -94,5 +81,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -7,7 +7,7 @@ angular.module('market').controller('storeController', function ($scope, $http, 
     $scope.loadProducts = function (pageIndex = 1) {
         $scope.currentPageIndex = pageIndex;
         $http({
-            url: contextPath + 'api/v1/products',
+            url: 'http://localhost:8189/market/api/v1/products',
             method:'GET',
             params: {
                 p: pageIndex
