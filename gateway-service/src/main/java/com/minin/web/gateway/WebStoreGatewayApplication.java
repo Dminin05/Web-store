@@ -1,13 +1,13 @@
-package com.minin.web.front;
+package com.minin.web.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebStoreFrontApplicatiom {
+public class WebStoreGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebStoreFrontApplicatiom.class, args);
+        SpringApplication.run(WebStoreGatewayApplication.class, args);
     }
 
 }

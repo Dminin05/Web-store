@@ -1,5 +1,5 @@
 angular.module('market').controller('createNewProductController', function ($scope, $http, $routeParams, $location) {
-    const contextPath = 'http://localhost:8189/market/';
+    const contextPath = 'http://localhost:5555/core/';
 
     $scope.createNewProduct = function () {
         $http.post(contextPath + 'api/v1/products/', $scope.new_product)

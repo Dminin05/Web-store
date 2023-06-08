@@ -1,6 +1,6 @@
 angular.module('market').controller('cartController', function ($scope, $http, $routeParams, $location, $localStorage) {
-    const contextPath = 'http://localhost:8190/market-carts/';
-    const contextPathForOrders = 'http://localhost:8189/market/';
+    const contextPath = 'http://localhost:5555/cart/';
+    const contextPathForOrders = 'http://localhost:5555/core/';
 
     $scope.loadProducts = function () {
         $http({
@@ -34,13 +34,23 @@ angular.module('market').controller('cartController', function ($scope, $http, $
         });
     };
 
+    // $scope.createOrder = function () {
+    //     $http({
+    //         url: contextPathForOrders + 'api/v1/order/createOrder',
+    //         method:'GET',
+    //         params: {
+    //             username: $localStorage.webUserStorage.username
+    //         }
+    //     }).then(function (response) {
+    //         $scope.getCart();
+    //         $scope.loadProducts();
+    //     });
+    // };
+
     $scope.createOrder = function () {
         $http({
             url: contextPathForOrders + 'api/v1/order/createOrder',
-            method:'GET',
-            params: {
-                username: $localStorage.webUserStorage.username
-            }
+            method:'GET'
         }).then(function (response) {
             $scope.getCart();
             $scope.loadProducts();

@@ -19,9 +19,7 @@ spring:
       enabled: true
       settings:
         web-allow-others: false
-jwt:
-  secret: newmbnfciwe8qr7923qhr423oih896&*%$*(^)(*h23iojhd
-  lifetime: 36000000
+
 
 integrations:
   cart-service:
@@ -29,4 +27,10 @@ integrations:
     read-timeout: 10000
     write-timeout: 5000
     connect-timeout: 5000
+
+    auth-service:
+      url: "http://localhost:8187/market-auth"
+      read-timeout: 10000
+      write-timeout: 5000
+      connect-timeout: 5000
 
